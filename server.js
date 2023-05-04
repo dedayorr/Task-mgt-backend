@@ -3,11 +3,13 @@ require("dotenv").config();
 const app = express();
 const dbConnect = require("./config/db");
 const { findById } = require("./models/TaskSchema");
+const cors = require('cors')
 
 const {createTask, readTask, readOneTask, deleteTask, updateTask} = require("./Controllers/Task")
 
 //middleware
 app.use(express.json());
+app.use(cors())
 
 //create task
 app.post("/create", createTask);
